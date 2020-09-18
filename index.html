@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #clock {
+            height: 600px;
+            width: 600px;
+            background: url('./clock.jpg') no-repeat;
+            position: relative;
+            margin: 10px auto;
+        }
+
+        #hour,
+        #minute,
+        #second {
+            position: absolute;
+            width: 30px;
+            height: 600px;
+            top: 0;
+            left: 50%;
+            margin-left: -15px;
+        }
+
+        #hour {
+            background: url('./hour.png') no-repeat;
+        }
+
+        #minute {
+            background: url('./minute.png') no-repeat;
+        }
+
+        #second {
+            background: url('./second.png') no-repeat;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="clock">
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+    </div>
+    <div style="margin: 10px auto;width: 200px;">
+        <button id="start">开始</button>
+        <button id="stop">暂停</button>
+    </div>
+
+    <script>
+        window.onload = function () {
+            var hour = document.getElementById('hour')
+            var minute = document.getElementById('minute')
+            var second = document.getElementById('second')
+            var start = document.getElementById('start')
+            var stop = document.getElementById('stop')
+            var animationFrame = ''
+            function timer() {
+                var nowTime = new Date()
+                var s = nowTime.getSeconds()
+                var m = nowTime.getMinutes()
+                var h = nowTime.getHours() + m / 60
+                var ms = nowTime.getMilliseconds()
+                hour.style.transform = "rotate(" + (h * 30) + "deg)"
+                minute.style.transform = "rotate(" + (m * 6) + "deg)"
+                second.style.transform = "rotate(" + (s * 6 + ms / 1000 * 6) + "deg)"
+                animationFrame = requestAnimationFrame(timer)
+            }
+            start.onclick = function () {
+                if(animationFrame) {
+                    return
+                }
+                animationFrame = requestAnimationFrame(timer)
+            }
+            stop.onclick = function () {
+                if(animationFrame) {
+                    cancelAnimationFrame(animationFrame)
+                    animationFrame = ''
+                }
+                return
+            }
+
+        }
+    </script>
+</body>
+
+</html>
