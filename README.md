@@ -3,4 +3,4 @@
 
 
 
-![](https://github.com/sand1018/clock-demo/Snipaste_.png)
+![](https://github.com/sand1018/clock-demo/blob/master/Snipaste_.png)
