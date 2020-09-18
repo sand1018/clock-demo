@@ -3,4 +3,4 @@
 
 
 
-![](C:\Users\Administrator\Desktop\Snipaste_2020-09-18_11-15-16.png)
+![](https://github.com/sand1018/clock-demo/Snipaste_.png)
